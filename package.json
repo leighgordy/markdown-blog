@@ -13,10 +13,11 @@
   "license": "UNLICENCED",
   "private": "true",
   "author": "Leigh G",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "serve": "node server/app.js",
+    "build": "node src/blog-generation/app.ts",
+    "serve": "node src/server/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
