@@ -10,11 +10,16 @@
     "type": "git",
     "url": "git+https://github.com/leighgordy/markup-blog.git"
   },
-  "license": "MIT",
+  "license": "UNLICENCED",
+  "private": "true",
   "author": "Leigh G",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "serve": "node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "express": "^5.2.1"
   }
 }
