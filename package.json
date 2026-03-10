@@ -1,0 +1,20 @@
+{
+  "name": "markup-blog",
+  "version": "0.0.1",
+  "description": "A static site that converts markup into blog pages",
+  "homepage": "https://github.com/leighgordy/markup-blog#readme",
+  "bugs": {
+    "url": "https://github.com/leighgordy/markup-blog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leighgordy/markup-blog.git"
+  },
+  "license": "MIT",
+  "author": "Leigh G",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
