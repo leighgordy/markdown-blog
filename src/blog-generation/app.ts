@@ -9,4 +9,3 @@ generatePages();
 console.log("\n++++++++++++++++++\n");
 generateindexes();
 console.log("\n++++++++++++++++++");
-
