@@ -23,7 +23,7 @@ console.log("What is the name of the post?");
 
 // Read from stdin
 process.stdin.on("data", (data) => {
-  const name = (data as string).trim().replaceAll(" ", "-");
+  const name = (data as string).trim().replaceAll(" ", "-").toLowerCase();
   process.stdin.pause();
 
   const timestamp = Date.now();
