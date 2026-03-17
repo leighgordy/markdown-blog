@@ -6,11 +6,11 @@ I have also written this to keep one hand in HTML and CSS. I generally build Sin
 
 ## instructions
 
-| code                | description                                                               |
-| ------------------- | ------------------------------------------------------------------------- |
-| `npm run build`     | build the site and static blog for use on live site, generates it in dist |
-| `npm run createPost`| create a blog post in source with thumnail and post markup file           |
-| `npm run serveDev`  | serve site via express, no blog content generated                         |
-| `npm run serveProd` | serve live site via express, contains generated blog content              |
-| `npm run clean`     | clean project using prettier                                              |
-| `npm run build`     | build ES module using typescript compiler                                 |
+| code                 | description                                                               |
+| -------------------- | ------------------------------------------------------------------------- |
+| `npm run build`      | build the site and static blog for use on live site, generates it in dist |
+| `npm run createPost` | create a blog post in source with thumnail and post markup file           |
+| `npm run serveDev`   | serve site via express, no blog content generated                         |
+| `npm run serveProd`  | serve live site via express, contains generated blog content              |
+| `npm run clean`      | clean project using prettier                                              |
+| `npm run build`      | build ES module using typescript compiler                                 |

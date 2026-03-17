@@ -1,12 +1,12 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
 const readDirectories = (directoryPath: string) => {
   const files = fs.readdirSync(directoryPath, { withFileTypes: true });
   const directories = files
-      .filter(file => file.isDirectory())
-      .map(dir => dir.name);
+    .filter((file) => file.isDirectory())
+    .map((dir) => dir.name);
 
-    return directories;
+  return directories;
 };
 
 export default readDirectories;
