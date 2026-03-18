@@ -11,9 +11,7 @@ const THUMBNAIL_TEMPLATE = `
 `;
 
 const postTemplate = (name: string) => `
-  # ${name}
-
-  Enter some post content here
+  Enter post content here
 `;
 
 process.stdin.resume();

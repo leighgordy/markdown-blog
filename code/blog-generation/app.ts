@@ -1,7 +1,8 @@
-import generatePages from "./generate-pages.ts";
+import generatePostPages from "./generate-post-pages.ts";
 import generateIndexes from "./generate-indexes.ts";
 import deleteDirContents from "./delete-dir-contents.ts";
 import copyFolderContents from "./copy-folder-contents.ts";
+import generatePostInfo from "./generate-post-info.ts";
 
 console.log("++++++++++++++++++++++++++++++");
 console.log("Delete dist directory contents");
@@ -21,7 +22,9 @@ console.log("++++++++++++++++++");
 console.log("Generating Blog content");
 console.log("++++++++++++++++++");
 
-generatePages();
+const postInfo = generatePostInfo();
+
+await generatePostPages(postInfo);
 console.log("++++++++++++++++++");
 generateIndexes();
 console.log("++++++++++++++++++");
