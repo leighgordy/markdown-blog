@@ -17,6 +17,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "prettier . --write",
+    "validate": "tsc --noEmit",
     "createPost": "node code/create-post/app.ts",
     "build": "node code/blog-generation/app.ts",
     "serveProd": "node code/server/app.ts",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "express": "^5.2.1",
-    "prettier": "3.8.1"
+    "prettier": "3.8.1",
+    "typescript": "^5.9.3"
   }
 }
