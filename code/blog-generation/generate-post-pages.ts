@@ -5,13 +5,18 @@ import deleteFile from "./delete-file.ts";
 import readFile from "./read-file.ts";
 import createPostPage from "./create-post-page.ts";
 import { type PostInfo } from "./types.ts";
+import {
+  postSourcePath,
+  blogProductionPath,
+  postPageTemplate,
+} from "./app-config.ts";
 
 const generatePostPages = async (postInfo: PostInfo[]): Promise<void> => {
-  const postTemplate = readFile("./src/blog/post/post.html");
+  const postTemplate = readFile(postPageTemplate);
 
   postInfo.forEach(async (postInfo) => {
     const postContent = readFile(
-      `./src/blog/post/${postInfo.directory}/content.md`,
+      `${postSourcePath}/${postInfo.directory}/content.md`,
     );
 
     createDir(postInfo.blogDirectory);
@@ -20,12 +25,10 @@ const generatePostPages = async (postInfo: PostInfo[]): Promise<void> => {
       createPostPage(postTemplate, postContent, postInfo),
     );
     await copyFolderContents(
-      `./src/blog/post/${postInfo.directory}`,
-      `./dist/blog/${postInfo.dateDirectory}`,
+      `${postSourcePath}/${postInfo.directory}`,
+      `${blogProductionPath}/${postInfo.dateDirectory}`,
     );
-    deleteFile(`./dist/blog/${postInfo.dateDirectory}/content.md`);
-
-    console.log(` Directory: ${postInfo.dateDirectory} ${postInfo.name}`);
+    deleteFile(`${blogProductionPath}/${postInfo.dateDirectory}/content.md`);
   });
 };
 
