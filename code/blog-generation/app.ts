@@ -25,9 +25,7 @@ console.log("++++++++++++++++++");
 const postInfo = generatePostInfo();
 
 await generatePostPages(postInfo);
-console.log("++++++++++++++++++");
-generateIndexes();
-console.log("++++++++++++++++++");
+await generateIndexes(postInfo);
 
 console.log("++++++++++++++++++++++++++++++");
 console.log("Program ended");

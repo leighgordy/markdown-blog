@@ -12,6 +12,7 @@ const generatePostInfo = (): PostInfo[] => {
     const dateDirectory = `${creationDate.getFullYear()}-${creationDate.getMonth() + 1}-${creationDate.getDate()}-${creationDate.getHours()}-${creationDate.getMinutes()}-${creationDate.getSeconds()}`;
     const blogDirectory = `./dist/blog/${dateDirectory}`;
     const blogPage = `./dist/blog/${dateDirectory}/${fileName}.html`;
+    const blogUrl = `/blog/${dateDirectory}/${fileName}.html`;
 
     return {
       fileName,
@@ -21,6 +22,7 @@ const generatePostInfo = (): PostInfo[] => {
       blogDirectory,
       dateDirectory,
       blogPage,
+      blogUrl,
     };
   });
 
