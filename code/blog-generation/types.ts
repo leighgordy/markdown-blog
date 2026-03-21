@@ -6,4 +6,5 @@ export type PostInfo = {
   dateDirectory: string;
   directory: string;
   blogPage: string;
+  blogUrl: string;
 };

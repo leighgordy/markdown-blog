@@ -12,6 +12,7 @@ describe("Test app.ts", async () => {
       dateDirectory: "2012-12-12",
       directory: "2012-12-12/post",
       blogPage: "2012-12-12/post/post.thml",
+      blogUrl: "./2012-12-12/post/post.html",
     },
   ];
 

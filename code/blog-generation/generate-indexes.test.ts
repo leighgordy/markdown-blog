@@ -40,8 +40,14 @@ describe("Test generate-indexes.ts", async () => {
 
   test("Ensure indexes are generated for single page", async () => {
     const posts: PostInfo[] = [
-      { name: "Post 1", fileName: "", creationDate: new Date("2023-01-01"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
-      { name: "Post 2", fileName: "", creationDate: new Date("2023-01-02"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
+      {
+        name: "Post 1", fileName: "", creationDate: new Date("2023-01-01"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
+      {
+        name: "Post 2", fileName: "", creationDate: new Date("2023-01-02"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
     ];
 
     const testee = await import("./generate-indexes.ts");
@@ -61,9 +67,18 @@ describe("Test generate-indexes.ts", async () => {
 
   test("Ensure indexes are generated for multiple pages", async () => {
     const posts: PostInfo[] = [
-      { name: "Post 1", fileName: "", creationDate: new Date("2023-01-01"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
-      { name: "Post 2", fileName: "", creationDate: new Date("2023-01-02"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
-      { name: "Post 3", fileName: "", creationDate: new Date("2023-01-03"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
+      {
+        name: "Post 1", fileName: "", creationDate: new Date("2023-01-01"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
+      {
+        name: "Post 2", fileName: "", creationDate: new Date("2023-01-02"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
+      {
+        name: "Post 3", fileName: "", creationDate: new Date("2023-01-03"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
     ];
 
     const testee = await import("./generate-indexes.ts");
@@ -77,9 +92,18 @@ describe("Test generate-indexes.ts", async () => {
 
   test("Ensure posts are sorted by creation date descending", async () => {
     const posts: PostInfo[] = [
-      { name: "Post 1", fileName: "", creationDate: new Date("2023-01-01"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
-      { name: "Post 3", fileName: "", creationDate: new Date("2023-01-03"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
-      { name: "Post 2", fileName: "", creationDate: new Date("2023-01-02"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
+      {
+        name: "Post 1", fileName: "", creationDate: new Date("2023-01-01"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
+      {
+        name: "Post 3", fileName: "", creationDate: new Date("2023-01-03"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
+      {
+        name: "Post 2", fileName: "", creationDate: new Date("2023-01-02"), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
     ];
 
     const testee = await import("./generate-indexes.ts");

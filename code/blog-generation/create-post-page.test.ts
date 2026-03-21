@@ -37,6 +37,7 @@ describe("Test create-post-page.ts", async () => {
       dateDirectory: "",
       directory: "",
       blogPage: "",
+      blogUrl: ""
     };
 
     const testee = await import("./create-post-page.ts");

@@ -13,8 +13,14 @@ describe("Test create-index-page.ts", async () => {
       </html>
     `;
     const posts: PostInfo[] = [
-      { name: "Post 1", fileName: "", creationDate: new Date(), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
-      { name: "Post 2", fileName: "", creationDate: new Date(), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "" },
+      {
+        name: "Post 1", fileName: "", creationDate: new Date(), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
+      {
+        name: "Post 2", fileName: "", creationDate: new Date(), blogDirectory: "", dateDirectory: "", directory: "", blogPage: "",
+        blogUrl: ""
+      },
     ];
     const result = testee.default(pageTemplate, posts, 0, 1);
 
