@@ -2,7 +2,6 @@ import { promises as fs } from "fs";
 import * as path from "path";
 
 async function deleteDirContents(dirPath: string): Promise<void> {
-  try {
     const files = await fs.readdir(dirPath);
     await Promise.all(
       files.map(async (file) => {
@@ -16,9 +15,6 @@ async function deleteDirContents(dirPath: string): Promise<void> {
         }
       }),
     );
-  } catch (error) {
-    console.error(`Error deleting contents of directory: ${error}`);
-  }
 }
 
 export default deleteDirContents;
