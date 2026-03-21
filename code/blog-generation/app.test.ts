@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import { type PostInfo } from "./types.ts";
-import { describe, test, mock } from "node:test";
+import { describe, test, mock, beforeEach, afterEach } from "node:test";
 
 describe("Test app.ts", async () => {
   const posts: PostInfo[] = [
@@ -16,28 +16,31 @@ describe("Test app.ts", async () => {
   ];
 
   const deleteDirContentsMock = mock.fn();
-  mock.module("./delete-dir-contents.ts", {
-    defaultExport: deleteDirContentsMock,
-  });
-
   const copyFolderContentsMock = mock.fn();
-  mock.module("./copy-folder-contents.ts", {
-    defaultExport: copyFolderContentsMock,
-  });
-
   const generatePostInfoMock = mock.fn(() => []);
-  mock.module("./generate-post-info.ts", {
-    defaultExport: generatePostInfoMock,
-  });
-
   const generatePostPagesMock = mock.fn();
-  mock.module("./generate-post-pages.ts", {
-    defaultExport: generatePostPagesMock,
+  const generateIndexesMock = mock.fn();
+
+  beforeEach(async () => {
+    mock.module("./delete-dir-contents.ts", {
+      defaultExport: deleteDirContentsMock,
+    });
+    mock.module("./copy-folder-contents.ts", {
+      defaultExport: copyFolderContentsMock,
+    });
+    mock.module("./generate-post-info.ts", {
+      defaultExport: generatePostInfoMock,
+    });
+    mock.module("./generate-post-pages.ts", {
+      defaultExport: generatePostPagesMock,
+    });
+    mock.module("./generate-indexes.ts", {
+      defaultExport: generateIndexesMock,
+    });
   });
 
-  const generateIndexesMock = mock.fn();
-  mock.module("./generate-indexes.ts", {
-    defaultExport: generateIndexesMock,
+  afterEach(() => {
+    mock.restoreAll();
   });
 
   test("Ensure app calls the correct mocked methods", async () => {
