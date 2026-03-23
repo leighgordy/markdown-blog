@@ -44,7 +44,7 @@ describe("Test delete-dir-contents.ts", async () => {
     statMock.mock.mockImplementation(() =>
       Promise.resolve({ isDirectory: () => false }),
     );
-    unlinkMock.mock.mockImplementation(() => Promise.resolve() as any);
+    unlinkMock.mock.mockImplementation(() => Promise.resolve());
 
     const testee = await import("./delete-dir-contents.ts");
     await testee.default("./test-dir");

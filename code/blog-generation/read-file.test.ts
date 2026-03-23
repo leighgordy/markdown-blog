@@ -1,8 +1,15 @@
 import assert from "node:assert";
-import { describe, test, mock, beforeEach, afterEach } from "node:test";
+import {
+  describe,
+  test,
+  mock,
+  beforeEach,
+  afterEach,
+  type Mock,
+} from "node:test";
 
 describe("Test read-file.ts", async () => {
-  const readFileSyncMock = mock.fn();
+  const readFileSyncMock = mock.fn() as Mock<() => String>;
 
   beforeEach(async () => {
     const fsExports = await import("fs").then(({ default: _, ...rest }) => ({
@@ -22,7 +29,7 @@ describe("Test read-file.ts", async () => {
 
   test("Ensure fs.readFileSync is called with correct arguments and returns file content", async () => {
     const expectedContent = "Hello, world!";
-    readFileSyncMock.mock.mockImplementation(() => expectedContent as any);
+    readFileSyncMock.mock.mockImplementation(() => expectedContent);
 
     const testee = await import("./read-file.ts");
     const result = testee.default("./test-file.txt");

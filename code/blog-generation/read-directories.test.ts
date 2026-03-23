@@ -1,8 +1,17 @@
 import assert from "node:assert";
-import { describe, test, mock, beforeEach, afterEach } from "node:test";
+import {
+  describe,
+  test,
+  mock,
+  beforeEach,
+  afterEach,
+  type Mock,
+} from "node:test";
 
 describe("Test read-directories.ts", async () => {
-  const readdirSyncMock = mock.fn();
+  const readdirSyncMock = mock.fn() as Mock<
+    () => { name: string; isDirectory: () => boolean }[]
+  >;
 
   beforeEach(async () => {
     const fsExports = await import("fs").then(({ default: _, ...rest }) => ({
@@ -27,7 +36,7 @@ describe("Test read-directories.ts", async () => {
       { name: "file2.js", isDirectory: () => false },
       { name: "dir2", isDirectory: () => true },
     ];
-    readdirSyncMock.mock.mockImplementation(() => mockFiles as any);
+    readdirSyncMock.mock.mockImplementation(() => mockFiles);
 
     const testee = await import("./read-directories.ts");
     const result = testee.default("./test-dir");

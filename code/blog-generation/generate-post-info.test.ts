@@ -1,16 +1,24 @@
 import assert from "node:assert";
-import { describe, test, mock, beforeEach, afterEach } from "node:test";
+import {
+  describe,
+  test,
+  mock,
+  beforeEach,
+  afterEach,
+  type Mock,
+} from "node:test";
 
 describe("Test generate-post-info.ts", async () => {
-  const readDirectoriesMock = mock.fn();
+  const readDirectoriesMock = mock.fn() as Mock<() => String[]>;
 
   let readDirectoriesContext: any;
   let appConfigContext: any;
 
   beforeEach(async () => {
-    readDirectoriesMock.mock.mockImplementation(
-      () => ["1672531200000_my-post", "1672617600000_another-post"] as any,
-    );
+    readDirectoriesMock.mock.mockImplementation(() => [
+      "1672531200000_my-post",
+      "1672617600000_another-post",
+    ]);
 
     readDirectoriesContext = mock.module("./read-directories.ts", {
       defaultExport: readDirectoriesMock,
@@ -60,9 +68,9 @@ describe("Test generate-post-info.ts", async () => {
   });
 
   test("Ensure multiple dashes in filename are converted to spaces", async () => {
-    readDirectoriesMock.mock.mockImplementation(
-      () => ["1672531200000_my-long-post-title"] as any,
-    );
+    readDirectoriesMock.mock.mockImplementation(() => [
+      "1672531200000_my-long-post-title",
+    ]);
 
     const testee = await import("./generate-post-info.ts");
     const result = testee.default();
@@ -71,7 +79,7 @@ describe("Test generate-post-info.ts", async () => {
   });
 
   test("Ensure empty directory list returns empty array", async () => {
-    readDirectoriesMock.mock.mockImplementation(() => [] as any);
+    readDirectoriesMock.mock.mockImplementation(() => []);
 
     const testee = await import("./generate-post-info.ts");
     const result = testee.default();

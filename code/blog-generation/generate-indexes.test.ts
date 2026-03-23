@@ -1,18 +1,23 @@
 import assert from "node:assert";
-import { describe, test, mock, beforeEach, afterEach } from "node:test";
+import {
+  describe,
+  test,
+  mock,
+  beforeEach,
+  afterEach,
+  type Mock,
+} from "node:test";
 import { type PostInfo } from "./types.ts";
 
 describe("Test generate-indexes.ts", async () => {
-  const readFileMock = mock.fn();
-  const createFileMock = mock.fn();
-  const createIndexPageMock = mock.fn();
+  const readFileMock = mock.fn() as Mock<() => String>;
+  const createFileMock = mock.fn() as Mock<() => void>;
+  const createIndexPageMock = mock.fn() as Mock<() => String>;
 
   beforeEach(async () => {
-    readFileMock.mock.mockImplementation(() => "<html>Template</html>" as any);
+    readFileMock.mock.mockImplementation(() => "<html>Template</html>");
     createFileMock.mock.mockImplementation(() => {});
-    createIndexPageMock.mock.mockImplementation(
-      () => "<html>Page</html>" as any,
-    );
+    createIndexPageMock.mock.mockImplementation(() => "<html>Page</html>");
 
     mock.module("./read-file.ts", {
       defaultExport: readFileMock,

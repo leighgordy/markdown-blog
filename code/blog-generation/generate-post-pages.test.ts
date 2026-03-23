@@ -1,14 +1,21 @@
 import assert from "node:assert";
-import { describe, test, mock, beforeEach, afterEach } from "node:test";
+import {
+  describe,
+  test,
+  mock,
+  beforeEach,
+  afterEach,
+  type Mock,
+} from "node:test";
 import { type PostInfo } from "./types.ts";
 
 describe("Test generate-post-pages.ts", async () => {
-  const readFileMock = mock.fn();
-  const createDirMock = mock.fn();
-  const createFileMock = mock.fn();
-  const deleteFileMock = mock.fn();
-  const copyFolderContentsMock = mock.fn();
-  const createPostPageMock = mock.fn();
+  const readFileMock = mock.fn() as Mock<(path: string) => String>;
+  const createDirMock = mock.fn() as Mock<() => void>;
+  const createFileMock = mock.fn() as Mock<() => void>;
+  const deleteFileMock = mock.fn() as Mock<() => void>;
+  const copyFolderContentsMock = mock.fn() as Mock<() => Promise<void>>;
+  const createPostPageMock = mock.fn() as Mock<(path: string) => String>;
 
   let readFileContext: any;
   let createDirContext: any;
@@ -22,17 +29,13 @@ describe("Test generate-post-pages.ts", async () => {
     readFileMock.mock.mockImplementation((path: string) => {
       if (path.endsWith("page.html")) return "<html>Template</html>";
       if (path.endsWith("content.md")) return "# Post Content";
-      return "" as any;
+      return "";
     });
     createDirMock.mock.mockImplementation(() => {});
     createFileMock.mock.mockImplementation(() => {});
     deleteFileMock.mock.mockImplementation(() => {});
-    copyFolderContentsMock.mock.mockImplementation(
-      () => Promise.resolve() as any,
-    );
-    createPostPageMock.mock.mockImplementation(
-      () => "<html>Page</html>" as any,
-    );
+    copyFolderContentsMock.mock.mockImplementation(() => Promise.resolve());
+    createPostPageMock.mock.mockImplementation(() => "<html>Page</html>");
 
     readFileContext = mock.module("./read-file.ts", {
       defaultExport: readFileMock,
