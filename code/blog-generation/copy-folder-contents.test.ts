@@ -9,8 +9,10 @@ import {
 } from "node:test";
 
 describe("Test copy-folder-contents.ts", async () => {
-  const mkdirMock = mock.fn() as Mock<() => Promise<void>>;
-  const readdirMock = mock.fn() as Mock<() => Promise<String[]>>;
+  const mkdirMock = mock.fn() as Mock<
+    (path: string, options: { recursive: boolean }) => Promise<void>
+  >;
+  const readdirMock = mock.fn() as Mock<(path: string) => Promise<String[]>>;
   const statMock = mock.fn() as Mock<() => Promise<{}>>;
   const copyFileMock = mock.fn() as Mock<() => Promise<void>>;
 
@@ -54,13 +56,9 @@ describe("Test copy-folder-contents.ts", async () => {
     await testee.default("./src", "./dest");
 
     assert.strictEqual(mkdirMock.mock.callCount(), 1);
-    //@ts-ignore
     assert.strictEqual(mkdirMock.mock.calls[0].arguments[0], "./dest");
-    //@ts-ignore
     assert.strictEqual(mkdirMock.mock.calls[0].arguments[1].recursive, true);
-
     assert.strictEqual(readdirMock.mock.callCount(), 1);
-    //@ts-ignore
     assert.strictEqual(readdirMock.mock.calls[0].arguments[0], "./src");
 
     assert.strictEqual(statMock.mock.callCount(), 2);
