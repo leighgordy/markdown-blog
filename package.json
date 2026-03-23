@@ -16,18 +16,21 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "validate": "prettier . --check && tsc --noEmit",
     "clean": "prettier . --write",
-    "validate": "tsc --noEmit",
     "createPost": "node code/create-post/app.ts",
+    "prebuild": "npm run validate",
     "build": "node code/blog-generation/app.ts",
     "serveProd": "node code/server/app.ts",
     "serveDev": "node code/server/app.ts src",
-    "test": "node --test --experimental-test-module-mocks \"**/*.test.ts\""
+    "test": "node --test --experimental-test-module-mocks \"**/*.test.ts\"",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.3.5",
     "express": "^5.2.1",
+    "husky": "^9.1.7",
     "prettier": "3.8.1",
     "typescript": "^5.9.3"
   }
