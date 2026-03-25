@@ -58,6 +58,8 @@ describe("Test generate-post-info.ts", async () => {
     assert.strictEqual(firstPost.name, "my post");
     assert.strictEqual(firstPost.directory, "1672531200000_my-post");
     assert.strictEqual(firstPost.blogDirectory, "./dist/blog/2023-1-1-0-0-0");
+    assert.strictEqual(firstPost.creationDate, "Sunday, 1 January 2023");
+    assert.strictEqual(firstPost.creationTime, "12:00:00 am");
     assert.strictEqual(
       firstPost.blogPage,
       "./dist/blog/2023-1-1-0-0-0/my-post.html",

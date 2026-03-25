@@ -14,21 +14,11 @@ const createPostPage = (
     )
     .replace(
       /<!--INJECT-POST-DATE-START-->([\s\S]*?)<!--INJECT-POST-DATE-END-->/s,
-      postInfo.creationDate.toLocaleDateString("en-GB", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
+      postInfo.creationDate,
     )
     .replace(
       /<!--INJECT-POST-TIME-START-->([\s\S]*?)<!--INJECT-POST-TIME-END-->/s,
-      postInfo.creationDate.toLocaleTimeString("en-GB", {
-        hour: "numeric",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-      }),
+      postInfo.creationTime,
     )
     .replace(
       /<!--INJECT-POST-AUTHOR-START-->([\s\S]*?)<!--INJECT-POST-AUTHOR-END-->/s,

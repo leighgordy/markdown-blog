@@ -38,7 +38,19 @@ describe("Test create-post-page.ts", async () => {
     const postInfo: PostInfo = {
       name: "Test Post",
       fileName: "",
-      creationDate: new Date("2023-01-01"),
+      creationDate: new Date("2023-01-02").toLocaleDateString("en-GB", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+      creationTime: new Date("2023-01-02").toLocaleTimeString("en-GB", {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }),
+      creationTimestamp: new Date("2023-01-02").getTime(),
       blogDirectory: "",
       dateDirectory: "",
       directory: "",
@@ -50,7 +62,8 @@ describe("Test create-post-page.ts", async () => {
     const result = testee.default(pageTemplate, postContent, postInfo);
 
     assert(result.includes("Test Post"));
-    assert(result.includes("Sunday, 1 January 2023"));
+    assert(result.includes("Monday, 2 January 2023"));
+    assert(result.includes("12:00:00 am"));
     assert(result.includes("Joe Bloggs"));
     assert(result.includes("<p>Hello world</p>"));
     assert.strictEqual(markdownHtmlConvertorMock.mock.callCount(), 1);

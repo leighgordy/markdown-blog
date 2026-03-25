@@ -1,6 +1,8 @@
 export type PostInfo = {
   fileName: string;
-  creationDate: Date;
+  creationDate: string;
+  creationTime: string;
+  creationTimestamp: number;
   name: string;
   blogDirectory: string;
   dateDirectory: string;

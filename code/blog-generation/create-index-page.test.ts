@@ -16,7 +16,9 @@ describe("Test create-index-page.ts", async () => {
       {
         name: "Post 1",
         fileName: "",
-        creationDate: new Date(),
+        creationDate: "2012-12-11",
+        creationTime: "11:00:00 am",
+        creationTimestamp: 12345,
         blogDirectory: "",
         dateDirectory: "",
         directory: "",
@@ -26,7 +28,9 @@ describe("Test create-index-page.ts", async () => {
       {
         name: "Post 2",
         fileName: "",
-        creationDate: new Date(),
+        creationDate: "2012-12-12",
+        creationTime: "12:00:00 am",
+        creationTimestamp: 6789,
         blogDirectory: "",
         dateDirectory: "",
         directory: "",

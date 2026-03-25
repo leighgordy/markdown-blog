@@ -11,10 +11,24 @@ const generatePostInfo = (): PostInfo[] => {
   const postInfo = directories.map((directory) => {
     const [timestamp, fileName] = directory.split("_");
 
-    const creationDate = new Date(Number.parseInt(timestamp));
+    const postDate = new Date(Number.parseInt(timestamp));
     const name = fileName.replaceAll("-", " ");
 
-    const dateDirectory = `${creationDate.getFullYear()}-${creationDate.getMonth() + 1}-${creationDate.getDate()}-${creationDate.getHours()}-${creationDate.getMinutes()}-${creationDate.getSeconds()}`;
+    const creationDate = postDate.toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const creationTime = postDate.toLocaleTimeString("en-GB", {
+      hour: "numeric",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+    const creationTimestamp = postDate.getTime();
+
+    const dateDirectory = `${postDate.getFullYear()}-${postDate.getMonth() + 1}-${postDate.getDate()}-${postDate.getHours()}-${postDate.getMinutes()}-${postDate.getSeconds()}`;
     const blogDirectory = `${blogProductionPath}/${dateDirectory}`;
     const blogPage = `${blogProductionPath}/${dateDirectory}/${fileName}.html`;
     const blogUrl = `${postUrlPath}/${dateDirectory}/${fileName}.html`;
@@ -22,6 +36,8 @@ const generatePostInfo = (): PostInfo[] => {
     return {
       fileName,
       creationDate,
+      creationTime,
+      creationTimestamp,
       name,
       directory,
       blogDirectory,

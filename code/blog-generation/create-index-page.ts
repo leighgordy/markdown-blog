@@ -35,12 +35,12 @@ const createIndexPage = (
                   est...
                 </p>
                 <footer class="post-page-article-footer">
-                  <div class="post-page-article-footer-item">Author: ${author}}</div>
+                  <div class="post-page-article-footer-item">Author: ${author}</div>
                   <div class="post-page-article-footer-date">
-                    Date: ${post.creationDate.toLocaleDateString("en-GB", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
+                    Date: ${post.creationDate}
                   </div>
                   <div class="post-page-article-footer-time">
-                    Time (GMT): ${post.creationDate.toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true })}
+                    Time (GMT): ${post.creationTime}
                   </div>
                 </footer>
               </div>

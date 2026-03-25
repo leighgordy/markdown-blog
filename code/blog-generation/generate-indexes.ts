@@ -9,7 +9,7 @@ import {
 } from "./app-config.ts";
 
 const generateIndexes = async (posts: PostInfo[]) => {
-  posts.sort((a, b) => b.creationDate.getTime() - a.creationDate.getTime());
+  posts.sort((a, b) => b.creationTimestamp - a.creationTimestamp);
 
   const pageTemplate = readFile(blogIndexPageTemplate);
 

@@ -6,7 +6,9 @@ describe("Test app.ts", async () => {
   const posts: PostInfo[] = [
     {
       fileName: "Post.html",
-      creationDate: new Date(),
+      creationDate: "2012-12-12",
+      creationTime: "12:00:00 am",
+      creationTimestamp: 12345,
       name: "Post",
       blogDirectory: "2012-12-12/post",
       dateDirectory: "2012-12-12",
