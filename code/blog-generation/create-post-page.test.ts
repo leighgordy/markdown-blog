@@ -26,6 +26,10 @@ describe("Test create-post-page.ts", async () => {
         <!--INJECT-POST-TITLE-END-->
         <!--INJECT-POST-DATE-START-->
         <!--INJECT-POST-DATE-END-->
+        <!--INJECT-POST-TIME-START-->
+        <!--INJECT-POST-TIME-END-->
+        <!--INJECT-POST-AUTHOR-START-->
+        <!--INJECT-POST-AUTHOR-END-->
         <!--INJECT-POST-CONTENT-START-->
         <!--INJECT-POST-CONTENT-END-->
       </html>
@@ -46,7 +50,8 @@ describe("Test create-post-page.ts", async () => {
     const result = testee.default(pageTemplate, postContent, postInfo);
 
     assert(result.includes("Test Post"));
-    assert(result.includes("Sun Jan 01 2023"));
+    assert(result.includes("Sunday, 1 January 2023"));
+    assert(result.includes("Joe Bloggs"));
     assert(result.includes("<p>Hello world</p>"));
     assert.strictEqual(markdownHtmlConvertorMock.mock.callCount(), 1);
     assert.strictEqual(
